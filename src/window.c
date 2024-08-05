@@ -912,6 +912,7 @@ GLFWAPI void glfwSetWindowAttrib(GLFWwindow* handle, int attrib, int value)
             window->decorated = value;
             if (!window->monitor)
                 _glfw.platform.setWindowDecorated(window, value);
+            return;
 		case GLFW_TITLEBAR:
 			if (_glfw.hints.window.titlebar == value)
             	return;
