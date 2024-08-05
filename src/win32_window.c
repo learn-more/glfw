@@ -1043,9 +1043,10 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg,
             // Windows 10 & 11, so we'll keep that for now.
 			requestedClientRect->top += 0; 
 
-            // NOTE(Yan): seems to make no difference what we return here,
-            //            was originally 0
-			return WVR_ALIGNTOP | WVR_ALIGNLEFT;
+            // We need to return 0 here, otherwise we ask windows to move
+            // the custom-drawn content to the original location.
+            // Because we modified the client rect, this is incorrect.
+            return 0;
 		}
 
         case WM_SIZE:
